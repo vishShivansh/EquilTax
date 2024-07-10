@@ -36,7 +36,10 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(bodyParser.json());
 
-const allowedOrigins = ["http://localhost:5173", "https://equilTax.vercel.app"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://equil-tax-beta.vercel.app",
+];
 const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -89,6 +92,11 @@ app.post("/send-email", (req, res) => {
       return res.status(500).send("Failed to send message. Please try again.");
     }
     console.log("Email sent:", info.response);
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://equil-tax-beta.vercel.app"
+    );
+
     res.status(200).send("Email sent successfully!");
   });
 });

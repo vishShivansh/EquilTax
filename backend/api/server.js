@@ -20,13 +20,11 @@
 // import fs from "fs";
 // import https from "https";
 
-import bodyParser from "body-parser";
-import cors from "cors";
-import dotenv from "dotenv";
-import express from "express";
-// import fs from "fs";
-// import https from "https";
-import nodemailer from "nodemailer";
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const express = require("express");
+const nodemailer = require("nodemailer");
 
 dotenv.config();
 
@@ -39,6 +37,8 @@ app.use(bodyParser.json());
 const allowedOrigins = [
   "http://localhost:5173",
   "https://equil-tax-beta.vercel.app",
+  "http://equiltax.com",
+  "https://equiltax.com",
 ];
 const corsOptions = {
   origin: (origin, callback) => {
@@ -54,15 +54,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// SSL certificate files
-// const privateKey = fs.readFileSync(
-//   "/ssl/keys/ec-e3e97217a3_9f886bfdc71192eafb29aceb19f7d737.key",
-//   "utf8"
-// );
-// const certificate = fs.readFileSync(
-//   "/ssl/certs/ec-expertcaadvisors_com_e3e97217a3_1728205107_5e165ab2acdca379971cf4c89b48cbd0.crt",
-//   "utf8"
-// );
+// SSL certificate files (if needed)
+// const fs = require("fs");
+// const privateKey = fs.readFileSync("/ssl/keys/ec-e3e97217a3_9f886bfdc71192eafb29aceb19f7d737.key", "utf8");
+// const certificate = fs.readFileSync("/ssl/certs/ec-expertcaadvisors_com_e3e97217a3_1728205107_5e165ab2acdca379971cf4c89b48cbd0.crt", "utf8");
 // const credentials = { key: privateKey, cert: certificate };
 
 // Email sending endpoint
@@ -94,14 +89,17 @@ app.post("/send-email", (req, res) => {
     console.log("Email sent:", info.response);
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://equil-tax-beta.vercel.app"
+      "https://equil-tax-beta.vercel.app",
+      "http://equiltax.com",
+      "https://equiltax.com"
     );
 
     res.status(200).send("Email sent successfully!");
   });
 });
 
-// Create HTTPS server
+// Create HTTPS server (if needed)
+// const https = require("https");
 // const httpsServer = https.createServer(credentials, app);
 
 // Start server

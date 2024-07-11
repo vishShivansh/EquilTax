@@ -17,7 +17,7 @@ const GetInTouch = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/test")
+    fetch("http://api.equiltax.com/test")
       .then((response) => {
         if (response.ok) {
           return response.text();
@@ -36,7 +36,7 @@ const GetInTouch = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/send-email", {
+      const response = await fetch("http://api.equiltax.com/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

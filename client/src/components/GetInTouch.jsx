@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import { useState } from "react";
 import EnquiryImage from "../../public/enquery.jpg";
@@ -16,32 +17,36 @@ const GetInTouch = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
-    try {
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        alert("Message sent successfully!");
-        setFormData({
-          name: "",
-          number: "",
-          email: "",
-          message: "",
+    // Ensure SMTP.js is loaded
+    if (window.Email) {
+      window.Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "sgshivansh22@gmail.com",
+        Password: "C8EFD9F85B7AC47A58B82BFC4893A218FDE3",
+        To: "shivanshgtb@gmail.com", // Replace with recipient's email address
+        From: email,
+        Subject: "New Enquiry from " + name,
+        Body: `Name: ${name}\nNumber: ${number}\nEmail: ${email}\nMessage: ${message}`,
+      })
+        .then((response) => {
+          alert("Message sent successfully!");
+          setFormData({
+            name: "",
+            number: "",
+            email: "",
+            message: "",
+          });
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("An error occurred. Please try again.");
         });
-      } else {
-        alert("Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("An error occurred. Please try again.");
+    } else {
+      console.error("SMTP.js is not loaded");
+      alert("SMTP.js is not loaded");
     }
   };
 

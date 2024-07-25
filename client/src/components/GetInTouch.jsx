@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EnquiryImage from "../../public/enquery.jpg";
 
 const GetInTouch = () => {
@@ -16,27 +16,11 @@ const GetInTouch = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  useEffect(() => {
-    fetch("http://api.equiltax.com/test")
-      .then((response) => {
-        if (response.ok) {
-          return response.text();
-        }
-        throw new Error("Network response was not ok.");
-      })
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }, []);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://api.equiltax.com/send-email", {
+      const response = await fetch("/api/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

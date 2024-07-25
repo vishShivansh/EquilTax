@@ -20,11 +20,11 @@ export const Header = () => {
               />
               <div className="flex flex-col">
                 <span className="font-bold text-black text-5xl 2sm:text-3xl">
-                  EQUIL
+                  EquilTax
                 </span>
                 <span className="text-center font-bold text-[rgba(32,95,141,255)] text-2xl 2sm:text-base">
-                  <span className="text-red-600">----</span>TAX{" "}
-                  <span className="text-red-600">----</span>
+                  <span className="text-red-600">--</span>PROFESSIONALS{" "}
+                  <span className="text-red-600">--</span>
                 </span>
               </div>
             </div>
@@ -45,7 +45,7 @@ export const Header = () => {
               className="w-[40px] h-[40px]"
             />
             <div className="flex flex-col">
-              <span className="font-bold text-white">tax@equiltax.info</span>
+              <span className="font-bold text-white">tax@equiltax.com</span>
               <span className="text-white">You can mail us</span>
             </div>
           </div>

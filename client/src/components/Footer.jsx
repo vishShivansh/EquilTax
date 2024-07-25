@@ -123,7 +123,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-center space-x-2">
                 <EnvelopeIcon className="h-5 w-5 text-gray-400" />
-                <span>tax@equiltax.info</span>
+                <span>tax@equiltax.com</span>
               </li>
             </ul>
           </div>

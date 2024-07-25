@@ -1,0 +1,16 @@
+{
+  "name": "api-send-email",
+  "version": "1.0.0",
+  "description": "A simple API to send emails using Mailgun",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "form-data": "^4.0.0",
+    "mailgun.js": "^9.1.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

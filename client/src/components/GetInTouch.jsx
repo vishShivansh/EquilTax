@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
+import emailjs from "emailjs-com";
 import { useState } from "react";
 import EnquiryImage from "../../public/enquery.jpg";
 
@@ -20,34 +20,35 @@ const GetInTouch = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Ensure SMTP.js is loaded
-    if (window.Email) {
-      window.Email.send({
-        Host: "smtp.elasticemail.com",
-        Username: "sgshivansh22@gmail.com",
-        Password: "C8EFD9F85B7AC47A58B82BFC4893A218FDE3",
-        To: "shivanshgtb@gmail.com", // Replace with recipient's email address
-        From: email,
-        Subject: "New Enquiry from " + name,
-        Body: `Name: ${name}\nNumber: ${number}\nEmail: ${email}\nMessage: ${message}`,
-      })
-        .then((response) => {
-          alert("Message sent successfully!");
-          setFormData({
-            name: "",
-            number: "",
-            email: "",
-            message: "",
-          });
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          alert("An error occurred. Please try again.");
+    // Send email using EmailJS
+    emailjs
+      .send(
+        "service_dwnfkjh",
+        "template_th7pdj6",
+        {
+          from_name: name,
+          from_email: email,
+          to_name: "Yash Gupta", // Replace with the recipient's name
+          message: message,
+          number: number,
+        },
+        "99E71u4FqPhpF8pCH",
+        "yash@equiltax.com"
+      )
+      .then((response) => {
+        console.log("Success:", response);
+        alert("Message sent successfully!");
+        setFormData({
+          name: "",
+          number: "",
+          email: "",
+          message: "",
         });
-    } else {
-      console.error("SMTP.js is not loaded");
-      alert("SMTP.js is not loaded");
-    }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
+      });
   };
 
   return (

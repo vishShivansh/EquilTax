@@ -1,23 +1,20 @@
 const fs = require("fs");
 const https = require("https");
-const path = require("path");
+
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const express = require("express");
-const formData = require("form-data");
-const Mailgun = require("mailgun.js");
+const nodemailer = require("nodemailer");
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// Serve static files from the 'public_html' directory
-app.use(express.static(path.join(__dirname, "index.html")));
 
 // CORS configuration
 const allowedOrigins = [
@@ -42,21 +39,25 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // SSL certificate files
-const privateKey = fs.readFileSync("/home/equiltax/ssl.key", "utf8");
-const SSLCertificate = fs.readFileSync("/home/equiltax/ssl.cert", "utf8");
-const CACertificate = fs.readFileSync("/home/equiltax/ca.cert", "utf8");
+// const privateKey = fs.readFileSync("/home/equiltax/ssl.key", "utf8");
+// const SSLCertificate = fs.readFileSync("/home/equiltax/ssl.cert", "utf8");
+// const CACertificate = fs.readFileSync("/home/equiltax/ca.cert", "utf8");
 
-const credentials = {
-  key: privateKey,
-  cert: SSLCertificate,
-  ca: CACertificate, // CA certificate
-};
+// const credentials = {
+//   key: privateKey,
+//   cert: SSLCertificate,
+//   ca: CACertificate, // CA certificate
+// };
 
-// Create Mailgun client
-const mailgun = new Mailgun(formData);
-const mg = mailgun.client({
-  username: "api",
-  key: process.env.MAILGUN_API_KEY,
+// Create Nodemailer transporter
+const transporter = nodemailer.createTransport({
+  host: "cad.crystalregistry.com",
+  port: 465,
+  secure: true, // true for 465, false for other ports
+  auth: {
+    user: process.env.SMTP_USER, // Your SMTP server username
+    pass: process.env.SMTP_PASS, // Your SMTP server password
+  },
 });
 
 // Email sending endpoint
@@ -65,30 +66,28 @@ app.post("/send-email", (req, res) => {
 
   const { name, number, email, message } = req.body;
 
-  mg.messages
-    .create(process.env.MAILGUN_DOMAIN, {
-      from: `Excited User <mailgun@${process.env.MAILGUN_DOMAIN}>`,
-      to: "sgshivansh22@gmail.com",
-      subject: `Message from ${name}`,
-      text: `Name: ${name}\nNumber: ${number}\nEmail: ${email}\nMessage: ${message}`,
-      html: `<h1>Message from ${name}</h1><p>Number: ${number}</p><p>Email: ${email}</p><p>Message: ${message}</p>`,
-    })
-    .then((msg) => {
-      console.log("Email sent:", msg);
-      res.status(200).send("Email sent successfully!");
-    })
-    .catch((err) => {
-      console.error("Error sending email:", err);
-      res.status(500).send("Failed to send message. Please try again.");
-    });
-});
+  const mailOptions = {
+    from: `"Excited User" <${email}>`, // sender address
+    to: "yash@equiltax.com", // list of receivers
+    subject: `Message from ${name}`, // Subject line
+    text: `Name: ${name}\nNumber: ${number}\nEmail: ${email}\nMessage: ${message}`, // plain text body
+    html: `<h1>Message from ${name}</h1><p>Number: ${number}</p><p>Email: ${email}</p><p>Message: ${message}</p>`, // html body
+  };
 
-// GET endpoint for testing
-app.get("/test", (req, res) => {
-  res.send("Server is running and responding to GET requests.");
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Error sending email:", error);
+      return res.status(500).send("Failed to send message. Please try again.");
+    }
+    console.log("Email sent:", info.response);
+    res.status(200).send("Email sent successfully!");
+  });
 });
 
 // Start HTTPS server
-https.createServer(credentials, app).listen(PORT, "0.0.0.0", () => {
+// https.createServer(credentials, app).listen(PORT, "0.0.0.0", () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);
 });

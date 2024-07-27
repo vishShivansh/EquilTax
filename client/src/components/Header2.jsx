@@ -51,16 +51,16 @@ export const Header2 = () => {
           <Link to={"/"} className="text-blue-500">
             Home
           </Link>
-          <Link to={"/AboutUs.aspx"} className="text-blue-500">
+          <Link to={"/About.jsx"} className="text-blue-500">
             About Us
           </Link>
-          <Link to={"/Newsfeed.aspx"} className="text-blue-500">
+          <Link to={"/Newsfeed.jsx"} className="text-blue-500">
             NewsFeed
           </Link>
-          <Link to={"/Career.aspx"} className="text-blue-500">
+          <Link to={"/Career.jsx"} className="text-blue-500">
             Career
           </Link>
-          <Link to={"/ContactUs.aspx"} className="text-blue-500">
+          <Link to={"/ContactUs.jsx"} className="text-blue-500">
             Contact Us
           </Link>
           <div className="relative z-20">
@@ -139,55 +139,55 @@ export const Header2 = () => {
                   E way bill portal
                 </Link>
                 <Link
-                  to={"gstacts.aspx"}
+                  to={"/gstacts.jsx"}
                   className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
                   Acts
                 </Link>
                 <Link
-                  to={"gstrules.aspx"}
+                  to={"/gstrules.jsx"}
                   className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
                   Rules
                 </Link>
                 <Link
-                  to={"GstCirculars.aspx"}
+                  to={"/GstCirculars.jsx"}
                   className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
                   Circulars
                 </Link>
                 <Link
-                  to={"GstNotifications.aspx"}
+                  to={"/GstNotifications.jsx"}
                   className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
                   Notifications
                 </Link>
                 <Link
-                  to={"GstForms.aspx"}
+                  to={"/GstForms.jsx"}
                   className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
                   Forms
                 </Link>
                 <Link
-                  to={"GstOrders.aspx"}
+                  to={"/GstOrders.jsx"}
                   className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
                   Orders
                 </Link>
                 <Link
-                  to={"GstInstructions.aspx"}
+                  to={"/GstInstructions.jsx"}
                   className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
                   Instructions
                 </Link>
                 <Link
-                  to={"GstHSNCodeWithRate.aspx"}
+                  to={"/GstHSNCodeWithRate.jsx"}
                   className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
                   HSN Code With Rate
                 </Link>
                 <Link
-                  to={"GstSACCode.aspx"}
+                  to={"/GstSACCode.jsx"}
                   className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
                   SAC Code
@@ -205,16 +205,16 @@ export const Header2 = () => {
           <Link to={"/"} className="block text-blue-500">
             Home
           </Link>
-          <Link to={"/AboutUs.aspx"} className="block text-blue-500">
+          <Link to={"/AboutUs.jsx"} className="block text-blue-500">
             About Us
           </Link>
-          <Link to={"/Newsfeed.aspx"} className="block text-blue-500">
+          <Link to={"/Newsfeed.jsx"} className="block text-blue-500">
             NewsFeed
           </Link>
-          <Link to={"/Career.aspx"} className="block text-blue-500">
+          <Link to={"/Career.jsx"} className="block text-blue-500">
             Career
           </Link>
-          <Link to={"/ContactUs.aspx"} className="block text-blue-500">
+          <Link to={"/ContactUs.jsx"} className="block text-blue-500">
             Contact Us
           </Link>
           <button
@@ -290,55 +290,55 @@ export const Header2 = () => {
                 E way bill portal
               </Link>
               <Link
-                to={"gstacts.aspx"}
+                to={"/gstacts.jsx"}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
               >
                 Acts
               </Link>
               <Link
-                to={"gstrules.aspx"}
+                to={"/gstrules.jsx"}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
               >
                 Rules
               </Link>
               <Link
-                to={"GstCirculars.aspx"}
+                to={"/GstCirculars.jsx"}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
               >
                 Circulars
               </Link>
               <Link
-                to={"GstNotifications.aspx"}
+                to={"/GstNotifications.jsx"}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
               >
                 Notifications
               </Link>
               <Link
-                to={"GstForms.aspx"}
+                to={"/GstForms.jsx"}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
               >
                 Forms
               </Link>
               <Link
-                to={"GstOrders.aspx"}
+                to={"/GstOrders.jsx"}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
               >
                 Orders
               </Link>
               <Link
-                to={"GstInstructions.aspx"}
+                to={"/GstInstructions.jsx"}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
               >
                 Instructions
               </Link>
               <Link
-                to={"GstHSNCodeWithRate.aspx"}
+                to={"/GstHSNCodeWithRate.jsx"}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
               >
                 HSN Code With Rate
               </Link>
               <Link
-                to={"GstSACCode.aspx"}
+                to={"/GstSACCode.jsx"}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
               >
                 SAC Code

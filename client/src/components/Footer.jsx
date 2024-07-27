@@ -16,17 +16,17 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to={"AboutUs.aspx"} className="hover:text-gray-300">
+                <Link to={"/AboutUs.jsx"} className="hover:text-gray-300">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to={"Career.aspx"} className="hover:text-gray-300">
+                <Link to={"/Career.jsx"} className="hover:text-gray-300">
                   Career
                 </Link>
               </li>
               <li>
-                <Link to={"ContactUs.aspx"} className="hover:text-gray-300">
+                <Link to={"/ContactUs.jsx"} className="hover:text-gray-300">
                   Contact Us
                 </Link>
               </li>

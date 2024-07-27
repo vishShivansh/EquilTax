@@ -19,10 +19,10 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/AboutUs.aspx" element={<About />} />
-        <Route path="/NewsFeed.aspx" element={<NewsFeed />} />
-        <Route path="/Career.aspx" element={<Career />} />
-        <Route path="/ContactUs.aspx" element={<ContactUs />} />
+        <Route path="/About.jsx" element={<About />} />
+        <Route path="/NewsFeed.jsx" element={<NewsFeed />} />
+        <Route path="/Career.jsx" element={<Career />} />
+        <Route path="/ContactUs.jsx" element={<ContactUs />} />
       </Routes>
       <Footer />
     </BrowserRouter>

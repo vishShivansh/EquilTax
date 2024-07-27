@@ -4,10 +4,10 @@ import { Header2 } from "./components/Header2.jsx";
 
 import { Footer } from "./components/Footer.jsx";
 import About from "./pages/About";
-import { Career } from "./pages/Career";
+import Career from "./pages/Career.jsx";
 import { ContactUs } from "./pages/ContactUs";
 import { Home } from "./pages/Home";
-import { NewsFeed } from "./pages/NewsFeed";
+import NewsFeed from "./pages/NewsFeed.jsx";
 
 export default function App() {
   return (

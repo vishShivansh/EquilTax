@@ -5,7 +5,7 @@ import { Header2 } from "./components/Header2.jsx";
 import { Footer } from "./components/Footer.jsx";
 import About from "./pages/About.jsx";
 import Career from "./pages/Career.jsx";
-import { ContactUs } from "./pages/ContactUs.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
 import { Home } from "./pages/Home.jsx";
 import NewsFeed from "./pages/NewsFeed.jsx";
 

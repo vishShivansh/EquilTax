@@ -1,55 +1,10 @@
 /* eslint-disable no-unused-vars */
-import emailjs from "emailjs-com";
-import { useState } from "react";
 import EnquiryImage from "../../public/enquery.jpg";
+import useContactForm from "../customHook/useContactForm";
 
 const GetInTouch = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    number: "",
-    email: "",
-    message: "",
-  });
-
+  const { formData, handleChange, handleSubmit } = useContactForm();
   const { name, number, email, message } = formData;
-
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Send email using EmailJS
-    emailjs
-      .send(
-        "service_dwnfkjh",
-        "template_th7pdj6",
-        {
-          from_name: name,
-          from_email: email,
-          to_name: "Yash Gupta", // Replace with the recipient's name
-          message: message,
-          number: number,
-        },
-        "99E71u4FqPhpF8pCH",
-        "yash@equiltax.com"
-      )
-      .then((response) => {
-        console.log("Success:", response);
-        alert("Message sent successfully!");
-        setFormData({
-          name: "",
-          number: "",
-          email: "",
-          message: "",
-        });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("An error occurred. Please try again.");
-      });
-  };
 
   return (
     <section className="py-12 bg-gray-100">
@@ -61,7 +16,11 @@ const GetInTouch = () => {
               <span className="text-lg">Send a Message</span>
               <h2 className="text-3xl font-bold">Get in Touch</h2>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form
+              onSubmit={(event) =>
+                handleSubmit(event, "Yash Gupta", "yash@equiltax.com")
+              }
+            >
               <div className="mb-4">
                 <input
                   type="text"
@@ -82,14 +41,19 @@ const GetInTouch = () => {
                   className="w-full p-2 border border-gray-300 rounded"
                   placeholder="Your Number"
                   maxLength="10"
-                  onKeyPress={(e) => {
-                    if (!/[0-9]/.test(e.key)) {
+                  onKeyDown={(e) => {
+                    if (
+                      !/[0-9]/.test(e.key) &&
+                      e.key !== "Backspace" &&
+                      e.key !== "Delete"
+                    ) {
                       e.preventDefault();
                     }
                   }}
                   required
                 />
               </div>
+
               <div className="mb-4">
                 <input
                   type="email"
